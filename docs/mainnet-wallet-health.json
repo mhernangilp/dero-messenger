@@ -1,0 +1,43 @@
+{
+  "observed_at_utc": "2026-11-09T21:36:15.551648+00:00",
+  "wallets": {
+    "alice": {
+      "address": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "height": 7879740,
+      "balance": 4544,
+      "unlocked_balance": 4544,
+      "address_matches": true,
+      "address_parser": "passed",
+      "known_transaction": {
+        "txid": "27ba10c4f20ae1f8db549465b4cf3e589011319fdbdb8e2ebca020e8bc0098bf",
+        "height": 7879672,
+        "topoheight": 7879672,
+        "blockhash": "cb8d697c6531dcd1f13a57f62d0093254ade05a29d1119e3ccd7c3fb89bad9cb",
+        "pos": 0,
+        "incoming": false,
+        "amount": 4500,
+        "fees": 181
+      },
+      "history_contains_known_transaction": true
+    },
+    "bob": {
+      "address": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "height": 7879740,
+      "balance": 4500,
+      "unlocked_balance": 4500,
+      "address_matches": true,
+      "address_parser": "passed",
+      "known_transaction": {
+        "txid": "27ba10c4f20ae1f8db549465b4cf3e589011319fdbdb8e2ebca020e8bc0098bf",
+        "height": 7879672,
+        "topoheight": 7879672,
+        "blockhash": "cb8d697c6531dcd1f13a57f62d0093254ade05a29d1119e3ccd7c3fb89bad9cb",
+        "pos": 0,
+        "incoming": true,
+        "amount": 4500,
+        "fees": 181
+      },
+      "history_contains_known_transaction": true
+    }
+  }
+}

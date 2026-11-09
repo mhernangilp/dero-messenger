@@ -1,0 +1,39 @@
+{
+  "proposal": {
+    "probe": "chainchat-psk-001",
+    "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+    "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+    "endpoint": "http://127.0.0.1:20209/json_rpc",
+    "payload_hex": "43500118bf6a96431afae30897a60761ccf3a059efdc757806f13482d7613375182c44d27d7390a0f7",
+    "payload_sha256": "53980d4710b342e876c40fb3697d29097f134c2e99311e5cd7e1f24cfed0348b",
+    "max_transactions": 1,
+    "maximum_total_atomic": 182,
+    "rpc": {
+      "method": "Transfer",
+      "params": {
+        "transfers": [
+          {
+            "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+            "amount": 1,
+            "payload_rpc": [
+              {
+                "name": "m",
+                "datatype": "S",
+                "value": "Q1ABGL9qlkMa+uMIl6YHYczzoFnv3HV4BvE0gtdhM3UYLETSfXOQoPc="
+              }
+            ]
+          }
+        ],
+        "ringsize": 16,
+        "fees": 181
+      }
+    }
+  },
+  "proposal_sha256": "92022135cffed5bb12f6f4b49449c26de48dba1a59329e7de22807833ef08054",
+  "status": "prepared",
+  "transfer_calls_reserved": 0,
+  "reserved_atomic": 0,
+  "superseded_proposals": [
+    "9e8e2450e53cf74627d9413b6946a36112071f949d26b70cae17fb6f8c3016b4"
+  ]
+}

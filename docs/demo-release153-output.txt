@@ -1,0 +1,53 @@
+[alice] setup --address
+Profile created for sim:alice
+Public identity: 2463df8820409f4666b7c07ad307d9da7e7bafde3b9605f872cf1f868090bad2
+Fingerprint: 8cfffb29c32a5afe6ea9b9058085f3e8d58bb06e1f833f7a377540a5742462c2
+[bob] setup --address
+Profile created for sim:bob
+Public identity: b669999e0c139c0dae7fb61396c3ad9a0dda7f058afcd073faf124bbb7a83ffb
+Fingerprint: 40905e810c12d9481cc2fa549b1258409bf8a1f2d7a3bc5ed9fe968eb2e1fbf9
+[alice] identity
+{"public_key": "2463df8820409f4666b7c07ad307d9da7e7bafde3b9605f872cf1f868090bad2", "fingerprint": "8cfffb29c32a5afe6ea9b9058085f3e8d58bb06e1f833f7a377540a5742462c2"}
+[bob] identity
+{"public_key": "b669999e0c139c0dae7fb61396c3ad9a0dda7f058afcd073faf124bbb7a83ffb", "fingerprint": "40905e810c12d9481cc2fa549b1258409bf8a1f2d7a3bc5ed9fe968eb2e1fbf9"}
+[alice] contacts add
+Application fingerprint: 40905e810c12d9481cc2fa549b1258409bf8a1f2d7a3bc5ed9fe968eb2e1fbf9
+Contact saved. Application identity is not proof of wallet ownership.
+[bob] contacts add
+Application fingerprint: 8cfffb29c32a5afe6ea9b9058085f3e8d58bb06e1f833f7a377540a5742462c2
+Contact saved. Application identity is not proof of wallet ownership.
+[alice] chat request
+3441e1f758d96c6318605ad649328e80
+[bob] sync
+Conversation request 3441e1f758d96c6318605ad649328e80
+Synchronized wallet height 4
+[bob] chat requests
+3441e1f758d96c6318605ad649328e80: claimed address sim:alice; identity 2463df8820409f4666b7c07ad307d9da7e7bafde3b9605f872cf1f868090bad2; fingerprint 8cfffb29c32a5afe6ea9b9058085f3e8d58bb06e1f833f7a377540a5742462c2
+[bob] chat accept
+Accepted; response queued or submitted
+[alice] sync
+Session established 3441e1f758d96c6318605ad649328e80
+Synchronized wallet height 7
+[alice] chat send
+Message encrypted and queued; inspect chat outbox for submission status
+[bob] sync
+Message received in 3441e1f758d96c6318605ad649328e80
+Synchronized wallet height 9
+[bob] chat read
+in: Hello Bob, this is an encrypted message over DERO.
+[bob] chat send
+Message encrypted and queued; inspect chat outbox for submission status
+[alice] sync
+Message received in 3441e1f758d96c6318605ad649328e80
+Synchronized wallet height 11
+[bob] chat send
+Message encrypted and queued; inspect chat outbox for submission status
+[alice] sync
+Message received in 3441e1f758d96c6318605ad649328e80
+Synchronized wallet height 13
+[alice] chat read
+out: Hello Bob, this is an encrypted message over DERO.
+in: Hello Alice, your message decrypted successfully.
+in: This message waited while you were offline.
+PASS: independent profiles, authenticated session, replies, and offline recovery.
+/tmp/dero-chat-demo-9uim9n0v

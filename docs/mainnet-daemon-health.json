@@ -1,0 +1,17 @@
+{
+  "observed_at_utc": "2026-11-09T21:36:30.357044+00:00",
+  "endpoint": "http://dero-node.mysrv.cloud:10102/json_rpc",
+  "result": {
+    "version": "3.6.0-152.DEROHE.STARGATE+14082026",
+    "height": 7879741,
+    "topoheight": 7879741,
+    "stableheight": 7879733,
+    "target_height": 0,
+    "testnet": false,
+    "network": "",
+    "status": "OK",
+    "incoming_connections_count": 44,
+    "outgoing_connections_count": 5,
+    "dynamic_fee_per_kb": 0
+  }
+}
