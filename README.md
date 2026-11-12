@@ -17,22 +17,21 @@ traffic analysis or a global observer.
 - A simulated backend for testing without wallets, funds or a daemon.
 
 **Mainnet result:** Alice and Bob completed an authenticated handshake and Bob
-read `Hello Bob, this is an encrypted message over DERO.` Eleven transactions
-cost **0.02002 DERO** gross. The earlier pre-shared-key probe cost 0.00182 DERO
-separately. Three participants, a longer message and offline recovery passed in
+read `Hello Bob, this is an encrypted message over DERO.`
+Three participants, a longer message and offline recovery passed in
 simulation; Charlie's Mainnet session and stopped-wallet recovery remain untested.
 See the [experiment report](docs/final-report-source.md) for TXIDs and evidence limits.
 
-## Install on Arch Linux
+## Install on Linux
 
-Python 3.11+ is declared; the recorded local validation used Python 3.14.9.
-Use a virtual environment:
+Install Git and Python 3.11+ with pip and venv support using your distribution's
+package manager. The recorded local validation used Python 3.14.9.
+Create a virtual environment:
 
 ```bash
-sudo pacman -S --needed python python-pip git
 git clone https://github.com/mhernangilp/dero-messenger.git
 cd dero-messenger
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-dev.lock
 python -m pip install --no-deps -e .
@@ -75,8 +74,13 @@ fragmentation, persistence, nonce safety across restarts and offline synchroniza
 
 ## Research notes
 
-Release153 accepts **78 binary packet bytes** with this app's encoding, leaving
-**58 bytes** after the fragment header. Each fragment needs its own transfer.
+The observed cost per transaction was **0.00182 DERO**: a **0.00181 DERO fee**
+plus **0.00001 DERO transferred** to the recipient. Fees may change.
+With this app's encoding, Release153 accepts at most **78 binary packet bytes**
+per transaction, including a 20-byte fragment header. That leaves **58 bytes of
+encrypted envelope data**. Larger envelopes require fragmentation across multiple
+paid transactions.
+
 Application identities require external fingerprint verification and do not prove
 ownership of a DERO address. Public ring members and network metadata can aid
 correlation; DERO privacy does not automatically provide application anonymity.

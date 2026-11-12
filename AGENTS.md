@@ -19,7 +19,8 @@ reassembled, authenticated and persisted. Local state is passphrase encrypted.
 
 ## Technology Stack
 Python 3.11+ declared, including 3.13; local recorded validation used Python 3.14.9.
-cryptography, httpx, Typer, Rich, SQLite, pytest and Ruff. Target: Arch Linux.
+cryptography, httpx, Typer, Rich, SQLite, pytest and Ruff. Target: Linux;
+local development used Arch Linux. README installation is distribution-neutral.
 Use the project virtual environment. Never install into system Python.
 
 ## Coding Conventions
