@@ -1,0 +1,43 @@
+{
+  "observed_at_utc": "2026-11-11T17:10:28.563301+00:00",
+  "wallet_height": 7888190,
+  "receipts": [
+    {
+      "txid": "63236a39daab2d6052b47b8ccecdc3c49951c43cdd7d0a7aea1954e239629aca",
+      "pos": 0,
+      "height": 7888180,
+      "topoheight": 7888180,
+      "blockhash": "f2f271b1b8fa9497c40a1483e2419f0a7bf3f33929a9b849b622919a41fd96fa",
+      "time": "2026-11-11T18:07:12.377+01:00",
+      "sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "destination": "",
+      "amount": 1,
+      "fees": 181,
+      "incoming": true,
+      "payload_sha256": "4f8cd21750812c9feca234d0c56cc9e67dcc650c43d986319cecfdb130d63222",
+      "confirmations": 11
+    },
+    {
+      "txid": "6a752eba6614c80ed3819edd5086eede15a844434b144e4b69c7cadb9cbcca9e",
+      "pos": 0,
+      "height": 7888181,
+      "topoheight": 7888181,
+      "blockhash": "13d4e7942ffbc1a33310a914729dedc5c6a78ea1baaec63b5837a5142f6b31b0",
+      "time": "2026-11-11T18:07:28.082+01:00",
+      "sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "destination": "",
+      "amount": 1,
+      "fees": 181,
+      "incoming": true,
+      "payload_sha256": "89eeba1c66399af6c204e31a1b1371b98b0b4d61099f8ef3c12904e289b8fef5",
+      "confirmations": 10
+    }
+  ],
+  "envelope_sha256": "d2af75e3d9fa675327ad664202d30b3f10f991eaada7ef0c9ad13e7257ba5a75",
+  "envelope_bytes": 92,
+  "session": "7449a7ca589687e87c4307cf0fc562f3",
+  "counter": 0,
+  "both_fragments_match": true,
+  "all_ten_confirmations": true,
+  "bob_aes_gcm_decryption": "Pending local app sync/read with passphrase"
+}

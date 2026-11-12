@@ -132,3 +132,28 @@ DERO's recipient payload decryption.
 Unknown versions/types are rejected. A future ratchet must use a new protocol
 version and define header/key transitions explicitly. Version 1 never silently
 interprets new formats or changes identity pins.
+
+## Resource accounting and three-wallet validation
+
+Each incomplete group now rejects a new chunk before its accumulated decoded bytes
+exceed 8192, including legacy 82-byte chunks. At most 64 groups therefore retain
+524,288 decoded fragment bytes; hex persistence uses up to 1,048,576 characters
+plus keys/metadata. The 64 deferred envelopes have the same byte ceiling separately.
+Each group has at most 142 indexed entries. Duplicate identical fragments do not
+increase state; conflicting counts or content fail. Out-of-order fragments remain
+indexed until complete, then all nonfinal chunk sizes must agree and the full
+truncated hash must match before protocol authentication. TTL cleanup runs during
+reconstruction/draining, not in a background timer.
+
+Stored message text is bounded by 10,000 messages of at most 4096 UTF-8 bytes
+(40,960,000 bytes before JSON escaping/metadata); sessions by 128 and each receive
+counter set by 10,000; outgoing packets by 2048; observed positions by 100,000.
+These are logical limits, not an exact SQLite file-size or process-RSS guarantee.
+JSON hex/escaping, SQLite journals, copies during encrypted state transactions and
+RPC buffers add overhead. RPC responses are capped at 32 MiB but full-history scans
+and sorting can still be costly. Resource exhaustion remains an availability risk.
+
+Standard-address handshakes use 6+3 transactions; message sizes 16/17 UTF-8 bytes
+use 1/2; the planned 512-byte message uses 10. The three-profile simulation exercises
+independent identity pins and directional keys, reverse-order duplicate fragments
+and restart recovery. See three-wallet-plan.md for the distinction from live tests.

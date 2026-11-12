@@ -21,6 +21,8 @@ def private_directory(path: Path) -> None:
 
 class Store:
     def __init__(self, path: Path, passphrase: str, initial: dict | None = None):
+        if len(passphrase) < 12:
+            raise ValueError("Use a passphrase of at least 12 characters")
         private_directory(path.parent)
         if path.is_symlink():
             raise ValueError("Database must not be a symlink")

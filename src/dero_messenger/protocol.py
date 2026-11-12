@@ -151,6 +151,11 @@ def reconstruct(pending: dict, packet: bytes, now: float | None = None) -> bytes
     old = group["chunks"].get(str(index))
     if old is not None and old != chunk.hex():
         raise ValueError("Conflicting fragment")
+    if (
+        old is None
+        and sum(len(c) // 2 for c in group["chunks"].values()) + len(chunk) > MAX_ENVELOPE
+    ):
+        raise ValueError("Fragment group exceeds envelope resource limit")
     group["chunks"][str(index)] = chunk.hex()
     if len(group["chunks"]) != count:
         return None

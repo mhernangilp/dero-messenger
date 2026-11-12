@@ -187,3 +187,58 @@ def test_outgoing_message_submission_status(pair):
     establish(alice, bob)
     alice.send("Bob", "status")
     assert alice.store.snapshot()["messages"][-1]["status"] == "submitted"
+
+
+def test_prepare_request_never_calls_send_and_preserves_pending(pair, monkeypatch):
+    from dero_messenger.experiment import pending_proposal
+
+    alice, bob = pair
+    monkeypatch.setattr(alice.transport, "send", lambda *a: pytest.fail("Must not submit"))
+    sid = alice.request("Bob", prepare_only=True)
+    state = alice.store.snapshot()
+    assert state["sessions"][sid]["status"] == "requested"
+    assert all(x["status"] == "pending" and x["txid"] is None for x in state["outbox"])
+    assert bob.transport.incoming()[1] == []
+    proposal = pending_proposal(state, 181)
+    assert proposal["count"] == len(state["outbox"])
+    assert proposal["maximum_debit_atomic"] == proposal["count"] * 182
+    assert proposal == pending_proposal(state, 181)
+    import json
+
+    encoded = json.dumps(proposal)
+    assert state["identity"] not in encoded
+    assert state["sessions"][sid]["ephemeral"] not in encoded
+    assert proposal["transactions"][0]["payload_hex"] == state["outbox"][0]["payload"]
+    state["outbox"][0]["status"] = "sending"
+    with pytest.raises(ValueError, match="Uncertain"):
+        pending_proposal(state, 181)
+
+
+def test_accept_prepare_does_not_send(pair, monkeypatch):
+    alice, bob = pair
+    sid = alice.request("Bob")
+    bob.sync()
+    monkeypatch.setattr(bob.transport, "send", lambda *a: pytest.fail("Must not submit acceptance"))
+    bob.accept(sid, prepare_only=True)
+    state = bob.store.snapshot()
+    assert state["sessions"][sid]["status"] == "established"
+    assert len(state["outbox"]) == 3
+    assert all(row["status"] == "pending" for row in state["outbox"])
+    assert alice.transport.incoming()[1] == []
+
+
+def test_send_prepare_reserves_nonce_without_broadcast(pair, monkeypatch):
+    from conftest import establish
+
+    from dero_messenger.experiment import pending_proposal
+
+    alice, bob = pair
+    sid = establish(alice, bob)
+    monkeypatch.setattr(alice.transport, "send", lambda *a: pytest.fail("Must not broadcast"))
+    alice.send("Bob", "Hello Bob, this is an encrypted message over DERO.", prepare_only=True)
+    state = alice.store.snapshot()
+    assert state["sessions"][sid]["counter"] == 1
+    assert state["messages"][-1]["status"] == "queued"
+    assert len([x for x in state["outbox"] if x["status"] == "pending"]) == 2
+    assert pending_proposal(state, 181)["count"] == 2
+    assert all(x["txid"] is None for x in state["outbox"][-2:])

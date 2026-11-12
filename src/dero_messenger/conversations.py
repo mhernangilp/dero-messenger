@@ -92,7 +92,7 @@ class Messenger:
                 )
             )
 
-    def request(self, contact: str) -> str:
+    def request(self, contact: str, *, prepare_only: bool = False) -> str:
         with self.store.transaction() as state:
             address = self.resolve(state, contact)
             if len(state["sessions"]) >= MAX_SESSIONS:
@@ -111,7 +111,8 @@ class Messenger:
                 status="requested", peer=address, request=req.hex(), ephemeral=secret.hex()
             )
             self.queue(state, address, req)
-        self.flush()
+        if not prepare_only:
+            self.flush()
         return sid.hex()
 
     @staticmethod
@@ -126,7 +127,7 @@ class Messenger:
         )
         session.pop("ephemeral", None)
 
-    def accept(self, sid: str) -> None:
+    def accept(self, sid: str, *, prepare_only: bool = False) -> None:
         with self.store.transaction() as state:
             session = state["sessions"].get(sid)
             if session is None or session["status"] != "incoming":
@@ -141,7 +142,8 @@ class Messenger:
             first, second = crypto.derive(secret, parsed["ephemeral"], req + response)
             self.establish(session, first, second, False)
             self.queue(state, session["peer"], response)
-        self.flush()
+        if not prepare_only:
+            self.flush()
 
     def reject(self, sid: str) -> None:
         with self.store.transaction() as state:
@@ -150,7 +152,7 @@ class Messenger:
                 raise ValueError("No pending request")
             session["status"] = "rejected"
 
-    def send(self, contact: str, text: str) -> None:
+    def send(self, contact: str, text: str, *, prepare_only: bool = False) -> None:
         plaintext = text.encode()
         if not 1 <= len(plaintext) <= p.MAX_TEXT:
             raise ValueError("Message must contain 1 to 4096 UTF-8 bytes")
@@ -185,7 +187,8 @@ class Messenger:
                 )
             )
         # Ciphertext and incremented counter are durable before any transmission.
-        self.flush()
+        if not prepare_only:
+            self.flush()
 
     def flush(self, retry_uncertain: bool = False) -> None:
         # Serialize sends under the DB lock. An interrupted RPC leaves 'sending'
@@ -334,7 +337,16 @@ class Messenger:
                 except (ValueError, InvalidSignature, InvalidTag, UnicodeError) as exc:
                     LOG.warning("incoming_rejected", extra={"reason": type(exc).__name__})
                 state["seen"][transfer.key] = dict(
-                    height=transfer.height, confirmations=transfer.confirmations
+                    height=transfer.height,
+                    confirmations=transfer.confirmations,
+                    reported_sender=transfer.reported_sender,
+                    fee_atomic=transfer.fee_atomic,
+                    topoheight=transfer.topoheight,
+                    blockhash=transfer.blockhash,
+                    timestamp=transfer.timestamp,
+                    observed_at=time.time(),
+                    packet_sha256=hashlib.sha256(transfer.payload).hexdigest(),
+                    fragment_id=transfer.payload[2:18].hex(),
                 )
             events.extend(self.drain(state))
             state["height"] = height

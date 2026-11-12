@@ -4,8 +4,8 @@
     "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
     "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
     "endpoint": "http://127.0.0.1:20209/json_rpc",
-    "payload_hex": "43500118bf6a96431afae30897a60761ccf3a059efdc757806f13482d7613375182c44d27d7390a0f7",
-    "payload_sha256": "53980d4710b342e876c40fb3697d29097f134c2e99311e5cd7e1f24cfed0348b",
+    "payload_hex": "43500146775d4320736566679dd394ba73e36aaa1ddb3fdb53987c1112a8abc1c07d05ff8f22ffb86f",
+    "payload_sha256": "d2d5805177e989fa7fe38f9075baeb80ca991989aeee4571dd6cf0980860056d",
     "max_transactions": 1,
     "maximum_total_atomic": 182,
     "rpc": {
@@ -19,7 +19,7 @@
               {
                 "name": "m",
                 "datatype": "S",
-                "value": "Q1ABGL9qlkMa+uMIl6YHYczzoFnv3HV4BvE0gtdhM3UYLETSfXOQoPc="
+                "value": "Q1ABRnddQyBzZWZnndOUunPjaqod2z/bU5h8ERKoq8HAfQX/jyL/uG8="
               }
             ]
           }
@@ -29,11 +29,29 @@
       }
     }
   },
-  "proposal_sha256": "92022135cffed5bb12f6f4b49449c26de48dba1a59329e7de22807833ef08054",
+  "proposal_sha256": "18e8b403ca2280a5b552326f80e99c8b3675681ec405770e9e9fe2adec93f3a3",
   "status": "prepared",
   "transfer_calls_reserved": 0,
   "reserved_atomic": 0,
   "superseded_proposals": [
-    "9e8e2450e53cf74627d9413b6946a36112071f949d26b70cae17fb6f8c3016b4"
+    "9e8e2450e53cf74627d9413b6946a36112071f949d26b70cae17fb6f8c3016b4",
+    "92022135cffed5bb12f6f4b49449c26de48dba1a59329e7de22807833ef08054"
+  ],
+  "events": [
+    {
+      "event": "user_approved_exact_proposal",
+      "proposal_sha256": "92022135cffed5bb12f6f4b49449c26de48dba1a59329e7de22807833ef08054",
+      "recorded_at": "2026-11-10T19:54:02.782037+00:00"
+    },
+    {
+      "event": "blocked_missing_ephemeral_key",
+      "details": "Prior runner session unavailable; no matching process found; zero submission attempts."
+    },
+    {
+      "event": "user_authorized_one_Hello_Bob_probe_with_agent_chosen_key",
+      "maximum_total_atomic": 182,
+      "recorded_at": "2026-11-10T20:04:15.358296+00:00",
+      "proposal_sha256": "18e8b403ca2280a5b552326f80e99c8b3675681ec405770e9e9fe2adec93f3a3"
+    }
   ]
 }

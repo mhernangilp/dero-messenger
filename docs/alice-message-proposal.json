@@ -1,0 +1,64 @@
+{
+  "status": "proposal_only_no_authorization",
+  "transactions": [
+    {
+      "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "payload_hex": "444dd2af75e3d9fa675327ad664202d30b3f000201037449a7ca589687e87c4307cf0fc562f300000000000000000fdb7976f0c229a4cb064d66a5a9de2e4be52d16dc9ec2200f27a0ec7f36f716",
+      "payload_sha256": "4f8cd21750812c9feca234d0c56cc9e67dcc650c43d986319cecfdb130d63222",
+      "envelope_id": "d2af75e3d9fa675327ad664202d30b3f10f991eaada7ef0c9ad13e7257ba5a75",
+      "maximum_debit_atomic": 182,
+      "rpc": {
+        "method": "Transfer",
+        "params": {
+          "transfers": [
+            {
+              "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+              "amount": 1,
+              "payload_rpc": [
+                {
+                  "name": "m",
+                  "datatype": "S",
+                  "value": "RE3Sr3Xj2fpnUyetZkIC0ws/AAIBA3RJp8pYlofofEMHzw/FYvMAAAAAAAAAAA/beXbwwimkywZNZqWp3i5L5S0W3J7CIA8noOx/NvcW"
+                }
+              ]
+            }
+          ],
+          "ringsize": 16,
+          "fees": 181
+        }
+      }
+    },
+    {
+      "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "payload_hex": "444dd2af75e3d9fa675327ad664202d30b3f01022bbe01e6f7bc66a7a7413fa78a4ac211c3aa8292039bbef68c5d40c101ca94e42e3c",
+      "payload_sha256": "89eeba1c66399af6c204e31a1b1371b98b0b4d61099f8ef3c12904e289b8fef5",
+      "envelope_id": "d2af75e3d9fa675327ad664202d30b3f10f991eaada7ef0c9ad13e7257ba5a75",
+      "maximum_debit_atomic": 182,
+      "rpc": {
+        "method": "Transfer",
+        "params": {
+          "transfers": [
+            {
+              "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+              "amount": 1,
+              "payload_rpc": [
+                {
+                  "name": "m",
+                  "datatype": "S",
+                  "value": "RE3Sr3Xj2fpnUyetZkIC0ws/AQIrvgHm97xmp6dBP6eKSsIRw6qCkgObvvaMXUDBAcqU5C48"
+                }
+              ]
+            }
+          ],
+          "ringsize": 16,
+          "fees": 181
+        }
+      }
+    }
+  ],
+  "count": 2,
+  "maximum_debit_atomic": 364,
+  "proposal_sha256": "2345c72d0c81233550eb497e2b851f7538d51f7a963246e035acf0f0dbed990e"
+}

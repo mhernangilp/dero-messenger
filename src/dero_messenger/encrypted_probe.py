@@ -1,14 +1,16 @@
-"""Interactive, one-transfer pre-shared-key demo with key retained only in memory.
+"""One-transfer PSK demo with a passphrase-encrypted, restartable key store.
 
-No network request occurs until the exact displayed proposal digest is entered.
-The key is never printed or intentionally persisted. Process loss loses the key;
-reconciliation can still verify ciphertext delivery, but cannot recover plaintext.
+Preparation is local only. Sending still requires approval of the exact proposal.
+Resuming an already reserved experiment performs read-only reconciliation only.
 """
 
+import argparse
+import getpass
 import hashlib
 import json
 import os
 import resource
+import sys
 import time
 from pathlib import Path
 
@@ -17,6 +19,7 @@ from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 from .mainnet_probe import ALICE, BOB, Probe, emit, wallet_for
 from .rpc import RPCError
+from .storage import Store
 
 MAGIC = b"CP\x01"
 AAD = b"ChainChat PSK probe v1\x00" + ALICE.encode() + b"\x00" + BOB.encode()
@@ -57,34 +60,95 @@ def replace_unspent_proposal(probe: Probe) -> None:
         raise
 
 
-def main() -> None:
-    os.umask(0o077)
-    resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
-    key = AESGCM.generate_key(bit_length=256)
-    packet = encrypt_greeting(key)
-    assert decrypt_greeting(key, packet) == "Hello Bob!"
-    probe = Probe(Path(".mainnet/probe.db"), packet)
+def load_key(directory: Path, passphrase: str, *, create: bool = False) -> tuple[bytes, bytes]:
+    path = directory / "encrypted-key.db"
+    initial = None
+    if not create and not path.exists():
+        raise ValueError("Probe key store is missing; do not regenerate a submitted probe")
+    if create:
+        # Store uses initial only when no encrypted row exists. This also recovers
+        # an empty file left by an interrupted or previously failed initialization.
+        key = AESGCM.generate_key(bit_length=256)
+        initial = {
+            "purpose": "chainchat-psk-probe-v1",
+            "key": key.hex(),
+            "packet": encrypt_greeting(key).hex(),
+        }
+    store = Store(path, passphrase, initial)
+    try:
+        state = store.snapshot()
+        if state.get("purpose") != "chainchat-psk-probe-v1":
+            raise ValueError("Wrong encrypted key store")
+        key, packet = bytes.fromhex(state["key"]), bytes.fromhex(state["packet"])
+        decrypt_greeting(key, packet)
+        return key, packet
+    finally:
+        store.close()
+
+
+def prepare_persistent(directory: Path, passphrase: str) -> dict:
+    previous = Probe(directory / "probe.db")
+    try:
+        record = previous.record()
+        if record["status"] != "prepared" or record["transfer_calls_reserved"] != 0:
+            raise ValueError("Cannot prepare a replacement after any submission attempt")
+    finally:
+        previous.close()
+    _, packet = load_key(directory, passphrase, create=True)
+    probe = Probe(directory / "probe.db", packet)
     try:
         replace_unspent_proposal(probe)
-        emit(probe.record())
-        print("AES-256-GCM greeting: Hello Bob!; key held only in this process.", flush=True)
-        print(
-            "No transfer submitted. Enter the exact proposal SHA-256 ONLY after explicit "
-            "user approval; any other input exits without sending:",
-            flush=True,
-        )
-        approval = input().strip()
-        if approval != probe.digest:
-            print("No authorization supplied; nothing submitted.")
-            return
-        alice, bob = wallet_for("alice"), wallet_for("bob")
-        try:
-            txid = probe.broadcast(approval, alice, bob)
-            print(f"Submitted txid: {txid}", flush=True)
-        except (RPCError, ValueError) as exc:
-            print(f"Submission stopped: {exc}. No retry will occur.", flush=True)
-            if probe.record()["transfer_calls_reserved"] != 1:
+        return probe.record()
+    finally:
+        probe.close()
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("action", choices=("prepare", "run"))
+    args = parser.parse_args()
+    os.umask(0o077)
+    resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+    passphrase = os.getenv("DERO_CHAT_PASSPHRASE")
+    if not passphrase:
+        if not sys.stdin.isatty():
+            raise ValueError("Run in a private terminal to enter the application passphrase")
+        passphrase = getpass.getpass("Application encryption passphrase (not wallet password): ")
+        if args.action == "prepare":
+            if passphrase != getpass.getpass("Confirm application passphrase: "):
+                raise ValueError("Passphrases do not match")
+    directory = Path(".mainnet")
+    if args.action == "prepare":
+        emit(prepare_persistent(directory, passphrase))
+        print("Prepared locally. Key encrypted on disk; no network calls or spending.")
+        return
+    key, packet = load_key(directory, passphrase)
+    probe = Probe(directory / "probe.db", packet)
+    try:
+        record = probe.record()
+        if record["proposal"] != probe.proposal:
+            raise ValueError("Stored key/packet does not match the prepared proposal")
+        emit(record)
+        reserved = record["transfer_calls_reserved"] == 1
+        if not reserved:
+            print(
+                "Enter the exact proposal SHA-256 ONLY after approval; other input cancels:",
+                flush=True,
+            )
+            if input().strip() != probe.digest:
+                print("No authorization supplied; nothing submitted.")
                 return
+        else:
+            print("Prior attempt already reserved: read-only reconciliation, no resend.")
+        alice, bob = wallet_for("alice"), wallet_for("bob")
+        if not reserved:
+            try:
+                txid = probe.broadcast(probe.digest, alice, bob)
+                print(f"Submitted txid: {txid}", flush=True)
+            except (RPCError, ValueError) as exc:
+                print(f"Submission stopped: {exc}. No retry will occur.", flush=True)
+                if probe.record()["transfer_calls_reserved"] != 1:
+                    return
         # Only read-only calls follow the one permitted submission attempt.
         while True:
             try:
@@ -111,6 +175,9 @@ def main() -> None:
 if __name__ == "__main__":
     try:
         main()
+    except InvalidTag:
+        print("Incorrect application passphrase or damaged encrypted key store.")
+        raise SystemExit(1) from None
     except (ValueError, RPCError, EOFError) as exc:
         # No raw upstream responses, cryptographic keys, or local variables are printed.
         print(json.dumps({"error": str(exc)}))

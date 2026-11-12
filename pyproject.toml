@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "dero-messenger"
 version = "0.1.0"
-description = "Encrypted asynchronous messaging PoC over DERO Stargate"
+description = "ChainChat research PoC for encrypted messaging over DERO Stargate"
 requires-python = ">=3.11"
 dependencies = ["cryptography>=44", "httpx>=0.28", "typer>=0.15", "rich>=13"]
 

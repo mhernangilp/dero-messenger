@@ -1,0 +1,104 @@
+{
+  "status": "proposal_only_no_spending_authorization",
+  "steps": [
+    {
+      "sender": "alice",
+      "destination": "bob",
+      "operation": "request",
+      "envelope_bytes": 312,
+      "transactions": 6,
+      "max_debit_atomic": 1092
+    },
+    {
+      "sender": "bob",
+      "destination": "alice",
+      "operation": "accept",
+      "envelope_bytes": 146,
+      "transactions": 3,
+      "max_debit_atomic": 546
+    },
+    {
+      "sender": "charlie",
+      "destination": "bob",
+      "operation": "request",
+      "envelope_bytes": 312,
+      "transactions": 6,
+      "max_debit_atomic": 1092
+    },
+    {
+      "sender": "bob",
+      "destination": "charlie",
+      "operation": "accept",
+      "envelope_bytes": 146,
+      "transactions": 3,
+      "max_debit_atomic": 546
+    },
+    {
+      "sender": "alice",
+      "destination": "bob",
+      "operation": "Hello Bob!",
+      "envelope_bytes": 52,
+      "transactions": 1,
+      "max_debit_atomic": 182
+    },
+    {
+      "sender": "charlie",
+      "destination": "bob",
+      "operation": "Hello Bob!",
+      "envelope_bytes": 52,
+      "transactions": 1,
+      "max_debit_atomic": 182
+    },
+    {
+      "sender": "bob",
+      "destination": "alice",
+      "operation": "Hello Alice!",
+      "envelope_bytes": 54,
+      "transactions": 1,
+      "max_debit_atomic": 182
+    },
+    {
+      "sender": "bob",
+      "destination": "charlie",
+      "operation": "Hello Charlie!",
+      "envelope_bytes": 56,
+      "transactions": 1,
+      "max_debit_atomic": 182
+    },
+    {
+      "sender": "alice",
+      "destination": "bob",
+      "operation": "512 ASCII L characters",
+      "envelope_bytes": 554,
+      "transactions": 10,
+      "max_debit_atomic": 1820
+    },
+    {
+      "sender": "charlie",
+      "destination": "bob",
+      "operation": "Offline message",
+      "envelope_bytes": 57,
+      "transactions": 1,
+      "max_debit_atomic": 182
+    }
+  ],
+  "transactions": 33,
+  "amount_per_tx": 1,
+  "fee_per_tx": 181,
+  "max_debit_atomic": 6006,
+  "fees_atomic": 5973,
+  "per_wallet_transactions": {
+    "alice": 17,
+    "bob": 8,
+    "charlie": 8
+  },
+  "per_wallet_debit_atomic": {
+    "alice": 3094,
+    "bob": 1456,
+    "charlie": 1456
+  },
+  "gross_mining_reward_dero": "0.09225",
+  "observed_hashrate_kh_s": "2.78",
+  "historical_probe_equivalents": "50.68681318681318681318681319",
+  "historical_mining_minutes_for_plan": "39.06341463414634146341463415"
+}

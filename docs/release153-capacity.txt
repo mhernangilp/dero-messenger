@@ -1,0 +1,12 @@
+version=3.6.0-153.DEROHE.STARGATE+21082026 argument_limit=111
+raw=24 CBOR=38 marshal=<nil> pack=<nil> roundtrip=true
+raw=78 CBOR=110 marshal=<nil> pack=<nil> roundtrip=true
+raw=79 CBOR=114 marshal=<nil> pack=Packed size 114 bytes, but limit is 111 roundtrip=false
+raw=102 CBOR=142 marshal=<nil> pack=Packed size 142 bytes, but limit is 111 roundtrip=false
+raw=103 CBOR=146 marshal=<nil> pack=Packed size 146 bytes, but limit is 111 roundtrip=false
+ASCII=105 CBOR=111 pack=<nil>
+ASCII=106 CBOR=112 pack=Packed size 112 bytes, but limit is 111
+=== RUN   TestMessengerRelease153Boundary
+--- PASS: TestMessengerRelease153Boundary (0.00s)
+PASS
+ok  	github.com/deroproject/derohe	0.033s

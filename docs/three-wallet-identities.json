@@ -1,0 +1,33 @@
+{
+  "alice": {
+    "address": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+    "public_identity": "8d4b1c7ae7f4b922148334da6eeda47c4c6d09724687839c12e28b6431e641bc",
+    "fingerprint": "1cccb572c7f4b45ece6d70f2e9435b6d70d53f1ac338afb470735b19bd9dc048",
+    "fingerprint_hash_matches": true,
+    "source": "User-provided local setup output; not independently decrypted from profile",
+    "wallet_ownership_proof": false
+  },
+  "bob": {
+    "address": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+    "public_identity": "f6c46ed9ff2c43a0cdb6e19df0bdf8977fe6f555e92c2f00b74da5a0e42cda4a",
+    "fingerprint": "4ef81cc4941a93afe3046379e6c245f76bcb0677f53f9485dbc12c1d7c48cafe",
+    "fingerprint_hash_matches": true,
+    "source": "User-provided local setup output; not independently decrypted from profile",
+    "wallet_ownership_proof": false
+  },
+  "charlie": {
+    "address": "dero1qy33m8gwtv4a7quhrv070pwu33zw8d4wvxkn5fcfqevgdu8v3q002qqcn3rj2",
+    "public_identity": "70b63f35fceecd33719ccb3a8aeaf1fb197a50e84068e0acf77603a0719b1a9a",
+    "fingerprint": "0bd753ed506eb8119801ec8e34559426cb89cd0a388354f2994cd526bb773705",
+    "fingerprint_hash_matches": true,
+    "source": "User-provided local setup output; not independently decrypted from profile",
+    "wallet_ownership_proof": false,
+    "superseded_identity": {
+      "public_identity": "858bcf9b0105ee885ad30be931808cb1e9a882cf6e28db9007751f0e33d23cf9",
+      "fingerprint": "e93d86420616723f313e06c67b0edfff7d846c8e20a474015fcee4df601380cf",
+      "reason": "Old application passphrase forgotten; profile retained, not reused"
+    },
+    "profile": ".mainnet/charlie-app-v2",
+    "bob_pin_evidence": "User supplied successful contacts add output with this fingerprint"
+  }
+}

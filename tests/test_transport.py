@@ -17,7 +17,8 @@ class FakeRPC:
             "GetAddress": {"address": address},
             "GetHeight": {"height": 20},
             "MakeIntegratedAddress": {"integrated_address": address, "payload_rpc": []},
-            "Transfer": {"txid": "abc"},
+            "Transfer": {"txid": "a" * 64},
+            "GetBalance": {"unlocked_balance": 1000},
             "GetTransfers": {
                 "entries": [
                     {
@@ -25,6 +26,11 @@ class FakeRPC:
                         "height": 10,
                         "txid": "abc",
                         "pos": 0,
+                        "sender": address,
+                        "fees": 181,
+                        "topoheight": 10,
+                        "blockhash": "b" * 64,
+                        "time": "2026-11-10T20:04:48Z",
                         "payload_rpc": p.payload_rpc(b"packet"),
                     },
                     {"incoming": True, "payload_rpc": []},
@@ -33,7 +39,11 @@ class FakeRPC:
         }[method]
 
 
-def test_wallet_rpc_contract_confirmation_and_payload():
+def test_wallet_rpc_contract_confirmation_and_payload(tmp_path):
+    from test_experiment import ADDRESSES, policy
+
+    from dero_messenger.experiment import SpendingGate
+
     rpc = FakeRPC()
     wallet = Wallet(rpc)
     address = wallet.address()
@@ -45,7 +55,14 @@ def test_wallet_rpc_contract_confirmation_and_payload():
         dero.send(address, b"packet")
     prompts = []
     dero.confirm = lambda text: prompts.append(text) or True
-    assert dero.send(address, b"packet") == "abc"
+    with pytest.raises(ValueError, match="spending policy"):
+        dero.send(address, b"packet")
+    dero.spending_gate = SpendingGate(tmp_path / "budget.db", policy())
+    dero.fee_atomic = 181
+    # This fake validates any destination; the gate independently applies its allowlist.
+    dero.validate = lambda address: None
+    assert dero.send(ADDRESSES[1], b"packet") == "a" * 64
+    dero.spending_gate.close()
     assert "amount 1 atomic" in prompts[0]
     call = [params for method, params in rpc.calls if method == "Transfer"][0]
     assert call["transfers"][0]["amount"] == 1
@@ -54,6 +71,10 @@ def test_wallet_rpc_contract_confirmation_and_payload():
     assert height == 20
     assert incoming[0].confirmations == 11
     assert incoming[0].payload == b"packet"
+    assert incoming[0].reported_sender == address
+    assert incoming[0].fee_atomic == 181
+    assert incoming[0].blockhash == "b" * 64
+    assert incoming[0].topoheight == 10
     with pytest.raises(ValueError):
         dero.send(address, bytes(103))
 
@@ -141,3 +162,40 @@ def test_pacing_does_not_hide_authentication_failure():
 
     with pytest.raises(RPCError, match="401"):
         Dero(Wallet(FailedRPC()), "unused").ready("txid")
+
+
+def test_readonly_outbox_reconciliation(tmp_path):
+    from test_experiment import ADDRESSES, policy
+
+    from dero_messenger.experiment import SpendingGate
+
+    gate = SpendingGate(tmp_path / "budget.db", policy())
+    txid = gate.submit(ADDRESSES[0], ADDRESSES[1], b"packet", 181, 1000, True, lambda: "a" * 64)
+
+    class History:
+        valid = True
+
+        def call(self, method, params=None):
+            if method == "GetAddress":
+                return dict(address=ADDRESSES[0])
+            assert method == "GetTransferbyTXID"
+            return dict(
+                entry=dict(
+                    txid=txid,
+                    height=10,
+                    incoming=False,
+                    destination=ADDRESSES[1],
+                    amount=1,
+                    fees=181,
+                    payload_rpc=p.payload_rpc(b"packet" if self.valid else b"tampered"),
+                )
+            )
+
+    rpc = History()
+    dero = Dero(Wallet(rpc), ADDRESSES[0], fee_atomic=181, spending_gate=gate)
+    assert dero.reconcile(ADDRESSES[1], b"packet") == txid
+    assert dero.reconcile(ADDRESSES[1], b"unknown") is None
+    rpc.valid = False
+    with pytest.raises(ValueError, match="match official"):
+        dero.reconcile(ADDRESSES[1], b"packet")
+    gate.close()

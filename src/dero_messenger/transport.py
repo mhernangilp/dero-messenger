@@ -1,6 +1,7 @@
 """Simulated ledger and explicitly enabled official DERO Wallet RPC transport."""
 
 import hashlib
+import json
 import os
 import sqlite3
 from collections.abc import Callable
@@ -8,6 +9,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Protocol
 
+from .experiment import SpendingGate
 from .protocol import CAPACITY, from_rpc, payload_rpc
 from .rpc import RPCError
 from .storage import private_directory
@@ -21,6 +23,11 @@ class Transfer:
     height: int
     confirmations: int
     payload: bytes
+    reported_sender: str = ""
+    fee_atomic: int | None = None
+    topoheight: int | None = None
+    blockhash: str = ""
+    timestamp: str = ""
 
     @property
     def key(self) -> str:
@@ -84,9 +91,11 @@ class Dero:
         enabled: bool = False,
         fee_atomic: int = 121,
         confirm: Callable[[str], bool] | None = None,
+        spending_gate: SpendingGate | None = None,
     ):
         self.wallet, self.address, self.enabled = wallet, address, enabled
         self.fee_atomic, self.confirm = fee_atomic, confirm
+        self.spending_gate = spending_gate
 
     def ready(self, txid: str) -> bool:
         try:
@@ -109,21 +118,65 @@ class Dero:
         args = payload_rpc(payload)
         if not 1 <= self.fee_atomic <= 100000:
             raise ValueError("Fee must be between 1 and 100000 atomic units")
+        parameters = {
+            "transfers": [{"destination": destination, "amount": 1, "payload_rpc": args}],
+            "ringsize": 16,
+            "fees": self.fee_atomic,
+        }
         prompt = (
-            f"Send one DERO transfer to {destination}: amount 1 atomic (0.00001 DERO), "
-            f"configured fee {self.fee_atomic} atomic, payload {len(payload)}/{CAPACITY} "
-            "bytes. Fee is a source-based estimate, not a live quote. Submit?"
+            f"Sender {self.address}; destination {destination}; amount 1 atomic (0.00001 DERO); "
+            f"configured fee {self.fee_atomic} atomic; maximum intended debit "
+            f"{1 + self.fee_atomic} atomic; payload {len(payload)}/{CAPACITY} bytes. "
+            f"Payload hex: {payload.hex()}; SHA-256: {hashlib.sha256(payload).hexdigest()}. "
+            f"RPC Transfer parameters: {json.dumps(parameters, sort_keys=True)}. "
+            "Configured fee is not a live quote. Submit this transaction only?"
         )
         if self.confirm is None or not self.confirm(prompt):
             raise ValueError("Transfer not confirmed")
-        return self.wallet.rpc.call(
-            "Transfer",
-            {
-                "transfers": [{"destination": destination, "amount": 1, "payload_rpc": args}],
-                "ringsize": 16,
-                "fees": self.fee_atomic,
-            },
-        )["txid"]
+        if self.spending_gate is None:
+            raise ValueError("A shared experiment spending policy is required for paid sends")
+        balance = self.wallet.rpc.call("GetBalance", {})["unlocked_balance"]
+        return self.spending_gate.submit(
+            self.address,
+            destination,
+            payload,
+            self.fee_atomic,
+            balance,
+            True,
+            lambda: self.wallet.rpc.call(
+                "Transfer",
+                parameters,
+            )["txid"],
+        )
+
+    def reconcile(self, destination: str, payload: bytes) -> str | None:
+        """Match a submitted reservation against official history without broadcasting."""
+        if self.wallet.address() != self.address or self.spending_gate is None:
+            raise ValueError("Matching wallet and shared spending ledger required")
+        known = self.spending_gate.lookup(self.address, destination, payload, self.fee_atomic)
+        if known is None:
+            return None
+        if known[0] != "submitted" or not known[1]:
+            raise ValueError("Uncertain reservation needs manual history reconciliation")
+        try:
+            entry = self.wallet.rpc.call("GetTransferbyTXID", {"txid": known[1]})["entry"]
+        except RPCError as exc:
+            if exc.not_found:
+                return None
+            raise
+        if int(entry.get("height", 0)) <= 0:
+            return None
+        if (
+            entry.get("txid") != known[1]
+            or entry.get("incoming") is not False
+            or entry.get("destination") != destination
+            or entry.get("payloaderror")
+            or int(entry.get("amount", -1)) != 1
+            or int(entry.get("fees", -1)) != self.fee_atomic
+            or from_rpc(entry.get("payload_rpc", [])) != payload
+        ):
+            raise ValueError("Reserved transaction does not match official history")
+        return known[1]
 
     def incoming(self) -> tuple[int, list[Transfer]]:
         if self.wallet.address() != self.address:
@@ -139,7 +192,16 @@ class Dero:
                 h = int(entry["height"])
                 transfers.append(
                     Transfer(
-                        entry["txid"], int(entry.get("pos", 0)), h, max(0, height - h + 1), packet
+                        entry["txid"],
+                        int(entry.get("pos", 0)),
+                        h,
+                        max(0, height - h + 1),
+                        packet,
+                        str(entry.get("sender", ""))[:128],
+                        int(entry["fees"]) if "fees" in entry else None,
+                        int(entry["topoheight"]) if "topoheight" in entry else None,
+                        str(entry.get("blockhash", ""))[:64],
+                        str(entry.get("time", ""))[:80],
                     )
                 )
             except (ValueError, KeyError, TypeError):

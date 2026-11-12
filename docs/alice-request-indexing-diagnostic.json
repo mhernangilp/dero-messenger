@@ -1,0 +1,270 @@
+{
+  "alice": {
+    "status": {
+      "address": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "height": 7886855,
+      "balance": 3270,
+      "unlocked_balance": 3270
+    },
+    "entries": [
+      {
+        "txid": "27ba10c4f20ae1f8db549465b4cf3e589011319fdbdb8e2ebca020e8bc0098bf",
+        "pos": 0,
+        "height": 7879672,
+        "topoheight": 7879672,
+        "blockhash": "cb8d697c6531dcd1f13a57f62d0093254ade05a29d1119e3ccd7c3fb89bad9cb",
+        "time": "2026-11-09T22:14:48.683+01:00",
+        "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+        "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "amount": 4500,
+        "fees": 181,
+        "incoming": false,
+        "payloaderror": null,
+        "payload_rpc": "not collected"
+      },
+      {
+        "txid": "a930ce565116983f5cd4b05bcaf1ebebab3be72294b71b517b74f6dad74c8684",
+        "pos": 0,
+        "height": 7884098,
+        "topoheight": 7884098,
+        "blockhash": "ce3d7c5af0acd309dbbb2b680461b9f0840217063ad1fac769065bcb5817cc1c",
+        "time": "2026-11-10T21:04:48.516+01:00",
+        "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+        "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "amount": 1,
+        "fees": 181,
+        "incoming": false,
+        "payloaderror": null,
+        "payload_rpc": "not collected"
+      },
+      {
+        "txid": "b39b2ef6bbfbcaa85bfd159ad0f194ddd9e1d2df7504a677a60653c73126a7d5",
+        "pos": 0,
+        "height": 7886830,
+        "topoheight": 7886830,
+        "blockhash": "e027139cf058918eb3273237b8225742ee92eb9f5d5065252063a54a60768578",
+        "time": "2026-11-11T11:11:52.774+01:00",
+        "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+        "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "amount": 1,
+        "fees": 181,
+        "incoming": false,
+        "payloaderror": null,
+        "payload_rpc": [
+          {
+            "name": "m",
+            "datatype": "S",
+            "value": "RE0tXmo86I/UdE8c8nq9/1QJAAYBAXRJp8pYlofofEMHzw/FYvONSxx65/S5IhSDNNpu7aR8TG0JckaHg5wS4otkMeZBvPbEbtn/LEOg"
+          }
+        ]
+      },
+      {
+        "txid": "4f29dc7a25ed9e85689dc7d54ca9ee1298067f59108babcd948e16efe029434a",
+        "pos": 0,
+        "height": 7886832,
+        "topoheight": 7886832,
+        "blockhash": "41b4a0329c3832f49d956e725ac70364d98c59815f94dd0f805b75a5ba6cdeeb",
+        "time": "2026-11-11T11:12:13.433+01:00",
+        "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+        "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "amount": 1,
+        "fees": 181,
+        "incoming": false,
+        "payloaderror": null,
+        "payload_rpc": [
+          {
+            "name": "m",
+            "datatype": "S",
+            "value": "RE0tXmo86I/UdE8c8nq9/1QJAQbNtuGd8L34l3/m9VXpLC8At02loOQs2kq9hzDf6WePTn+jwo0MBGmXY+zIKF9C6g9E9XOKRSeqXEJk"
+          }
+        ]
+      },
+      {
+        "txid": "2943cc0234690167d6767bc99c4f76ef7c0f455590f3d32e7db74548a4d399bc",
+        "pos": 0,
+        "height": 7886833,
+        "topoheight": 7886833,
+        "blockhash": "b17f517c7664a7613326a35664d281e4cc9d900cc71c95f03993eefa2c62e826",
+        "time": "2026-11-11T11:12:31.139+01:00",
+        "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+        "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "amount": 1,
+        "fees": 181,
+        "incoming": false,
+        "payloaderror": null,
+        "payload_rpc": [
+          {
+            "name": "m",
+            "datatype": "S",
+            "value": "RE0tXmo86I/UdE8c8nq9/1QJAgZlcm8xcXlucm04cW44MnZlc3hqY2VjdXdyMGR0N2xnNWd5NGUwamRyaGRkdXA1bXM2azcwNTYyenFx"
+          }
+        ]
+      },
+      {
+        "txid": "317c756962cc3cf9a988be6b43fbb445db7cdf359b608a784a722a1939cb9df7",
+        "pos": 0,
+        "height": 7886834,
+        "topoheight": 7886834,
+        "blockhash": "8d980329bf91af3628612d1115e8b5fef16b597a97d1b0460cd6024f80d2193c",
+        "time": "2026-11-11T11:12:50.283+01:00",
+        "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+        "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "amount": 1,
+        "fees": 181,
+        "incoming": false,
+        "payloaderror": null,
+        "payload_rpc": [
+          {
+            "name": "m",
+            "datatype": "S",
+            "value": "RE0tXmo86I/UdE8c8nq9/1QJAwZncTllOHRrQmRlcm8xcXk5dXY3M3doNHMzZXczczY4cTV3czZ5M25uNnN1dHdyNnhzNmc3bWh6dWVm"
+          }
+        ]
+      }
+    ],
+    "lookup": [
+      {
+        "txid": "5f9d3c29646f3d90b28c48526d141152b7542df400f0985c9484ece07a5cbfbd",
+        "error": "Wallet RPC error code -32098"
+      },
+      {
+        "txid": "b20aa962d7c559ea8c425b846a38d27ee4dd57adad98fe6c5ecb18260350a989",
+        "error": "Wallet RPC error code -32098"
+      }
+    ]
+  },
+  "bob": {
+    "status": {
+      "address": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "height": 7886854,
+      "balance": 4507,
+      "unlocked_balance": 4507
+    },
+    "entries": [
+      {
+        "txid": "27ba10c4f20ae1f8db549465b4cf3e589011319fdbdb8e2ebca020e8bc0098bf",
+        "pos": 0,
+        "height": 7879672,
+        "topoheight": 7879672,
+        "blockhash": "cb8d697c6531dcd1f13a57f62d0093254ade05a29d1119e3ccd7c3fb89bad9cb",
+        "time": "2026-11-09T22:14:48.683+01:00",
+        "sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "destination": "",
+        "amount": 4500,
+        "fees": 181,
+        "incoming": true,
+        "payloaderror": null,
+        "payload_rpc": "not collected"
+      },
+      {
+        "txid": "a930ce565116983f5cd4b05bcaf1ebebab3be72294b71b517b74f6dad74c8684",
+        "pos": 0,
+        "height": 7884098,
+        "topoheight": 7884098,
+        "blockhash": "ce3d7c5af0acd309dbbb2b680461b9f0840217063ad1fac769065bcb5817cc1c",
+        "time": "2026-11-10T21:04:48.516+01:00",
+        "sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "destination": "",
+        "amount": 1,
+        "fees": 181,
+        "incoming": true,
+        "payloaderror": null,
+        "payload_rpc": "not collected"
+      },
+      {
+        "txid": "b39b2ef6bbfbcaa85bfd159ad0f194ddd9e1d2df7504a677a60653c73126a7d5",
+        "pos": 0,
+        "height": 7886830,
+        "topoheight": 7886830,
+        "blockhash": "e027139cf058918eb3273237b8225742ee92eb9f5d5065252063a54a60768578",
+        "time": "2026-11-11T11:11:52.774+01:00",
+        "sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "destination": "",
+        "amount": 1,
+        "fees": 181,
+        "incoming": true,
+        "payloaderror": null,
+        "payload_rpc": [
+          {
+            "name": "m",
+            "datatype": "S",
+            "value": "RE0tXmo86I/UdE8c8nq9/1QJAAYBAXRJp8pYlofofEMHzw/FYvONSxx65/S5IhSDNNpu7aR8TG0JckaHg5wS4otkMeZBvPbEbtn/LEOg"
+          }
+        ]
+      },
+      {
+        "txid": "4f29dc7a25ed9e85689dc7d54ca9ee1298067f59108babcd948e16efe029434a",
+        "pos": 0,
+        "height": 7886832,
+        "topoheight": 7886832,
+        "blockhash": "41b4a0329c3832f49d956e725ac70364d98c59815f94dd0f805b75a5ba6cdeeb",
+        "time": "2026-11-11T11:12:13.433+01:00",
+        "sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "destination": "",
+        "amount": 1,
+        "fees": 181,
+        "incoming": true,
+        "payloaderror": null,
+        "payload_rpc": [
+          {
+            "name": "m",
+            "datatype": "S",
+            "value": "RE0tXmo86I/UdE8c8nq9/1QJAQbNtuGd8L34l3/m9VXpLC8At02loOQs2kq9hzDf6WePTn+jwo0MBGmXY+zIKF9C6g9E9XOKRSeqXEJk"
+          }
+        ]
+      },
+      {
+        "txid": "2943cc0234690167d6767bc99c4f76ef7c0f455590f3d32e7db74548a4d399bc",
+        "pos": 0,
+        "height": 7886833,
+        "topoheight": 7886833,
+        "blockhash": "b17f517c7664a7613326a35664d281e4cc9d900cc71c95f03993eefa2c62e826",
+        "time": "2026-11-11T11:12:31.139+01:00",
+        "sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "destination": "",
+        "amount": 1,
+        "fees": 181,
+        "incoming": true,
+        "payloaderror": null,
+        "payload_rpc": [
+          {
+            "name": "m",
+            "datatype": "S",
+            "value": "RE0tXmo86I/UdE8c8nq9/1QJAgZlcm8xcXlucm04cW44MnZlc3hqY2VjdXdyMGR0N2xnNWd5NGUwamRyaGRkdXA1bXM2azcwNTYyenFx"
+          }
+        ]
+      },
+      {
+        "txid": "317c756962cc3cf9a988be6b43fbb445db7cdf359b608a784a722a1939cb9df7",
+        "pos": 0,
+        "height": 7886834,
+        "topoheight": 7886834,
+        "blockhash": "8d980329bf91af3628612d1115e8b5fef16b597a97d1b0460cd6024f80d2193c",
+        "time": "2026-11-11T11:12:50.283+01:00",
+        "sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "destination": "",
+        "amount": 1,
+        "fees": 181,
+        "incoming": true,
+        "payloaderror": null,
+        "payload_rpc": [
+          {
+            "name": "m",
+            "datatype": "S",
+            "value": "RE0tXmo86I/UdE8c8nq9/1QJAwZncTllOHRrQmRlcm8xcXk5dXY3M3doNHMzZXczczY4cTV3czZ5M25uNnN1dHdyNnhzNmc3bWh6dWVm"
+          }
+        ]
+      }
+    ],
+    "lookup": [
+      {
+        "txid": "5f9d3c29646f3d90b28c48526d141152b7542df400f0985c9484ece07a5cbfbd",
+        "error": "Wallet RPC error code -32098"
+      },
+      {
+        "txid": "b20aa962d7c559ea8c425b846a38d27ee4dd57adad98fe6c5ecb18260350a989",
+        "error": "Wallet RPC error code -32098"
+      }
+    ]
+  }
+}

@@ -4,9 +4,26 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .env
+.env.*
+!.env.example
 .demo/
 *.db
 *.db-*
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.sqlite3-*
+*.wallet
+*.wallet.*
+
+# Build, coverage and generated report artifacts.
+build/
+dist/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+docs/report-evidence.zip
 
 # Local Mainnet experiment state and user wallet notes (never inspect as credentials).
 .mainnet/

@@ -16,6 +16,7 @@ class Config:
     confirmations: int = 10
     enable_mainnet: bool = False
     fee_atomic: int = 121
+    spending_policy: str | None = None
 
     def save(self, profile: Path) -> None:
         private_directory(profile)

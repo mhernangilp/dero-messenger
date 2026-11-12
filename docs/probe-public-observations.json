@@ -1,0 +1,28 @@
+{
+  "url": "https://explorer.dero-node.net/tx/a930ce565116983f5cd4b05bcaf1ebebab3be72294b71b517b74f6dad74c8684",
+  "html_sha256": "062f235959637a0ce14b9384081e33e6f1e5a758540574b88c6785e892c048d9",
+  "ring_addresses": [
+    "dero1qy4aex0ua5cc8z3ncppkdr3gnzntut4a532lz7y97kptml5kjkj06qgmjjcwr",
+    "dero1qy5yyl8vtpxwxg26z44urk35eav97kr7mnm7fyzefhh6sxd6hqc5xqqzakrem",
+    "dero1qy823khykda7gk8ck5hpx0lc9p6cw455xj4whd3hkm2zu4puysavgqgs0gj0v",
+    "dero1qy8zxada5qy983w4x0rw6466pc9qym5kza3qqtkwu02p4zyzt9plxqgl2fjzw",
+    "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+    "dero1qydfpxpajj5dzr38uz8t4tpxnxntdcel5ml96384gkj9g8uza8tz7qggjfm79",
+    "dero1qyjzzqm4jrr4nmuhgsnxr3wks7mqdxlayhcx540l2rw2zp48pypxvqqaqxds6",
+    "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+    "dero1qypu4nzwgvysl3z2wcvv7835c0p6hztmf90z4jujkzlr6x4v9uldyqq06skqm",
+    "dero1qyr5hu6f7lpv78sfaq8te5gq40yl03rly2xyqjq80qj2h9snjupwvqqyacu5x",
+    "dero1qyrskjxslqjv94rz4hwjgmgrntglhld2jwr7j64hp3v2cqv44gdqkqq3yq99w",
+    "dero1qysqfsczwhl4t3xcn7wm8uuqlwjqjwvjcvv2csnm0pthc7rqw6spzqqy9qwha",
+    "dero1qysrczky03yewqg6fmyd59eg0dm0qwfg8xw2ftfmmv3tj094p68djqq7etvv4",
+    "dero1qyx6a3q4a985ugpvvsj38l3shudwf5gwlygcs6c8fspxm6dvtkf6yqga22q2l",
+    "dero1qyxslyxp0qh9kkgunwtpqjvj4k7mpdxv6sq9wpyesan0g5n058kjvqg9g4ukh",
+    "dero1qyy43pcfza5ct2a2y6g6ast4w9p5flftwxt4j7d4lnnxe39wdmd32qguu0mjr"
+  ],
+  "explorer_displayed_size": "3.146 kB",
+  "fee_dero": "0.00181",
+  "height": 7884098,
+  "timestamp_utc": "2026-11-10 20:04:48",
+  "ring_size": 16,
+  "confirmations_at_observation": 209
+}

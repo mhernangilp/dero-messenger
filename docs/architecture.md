@@ -33,6 +33,7 @@ flowchart LR
 | `wallet.py` | Verified official wallet methods |
 | `monitor.py` | Polling and capped recovery backoff |
 | `cli.py` | Commands, passphrase prompts, and paid-send confirmation |
+| `experiment.py` | Public proposals and shared durable spending limits |
 
 ## Persistent state
 
@@ -66,9 +67,9 @@ SQLite serializes writes, and a confirmation prompt holds the write lock.
    when all their fragments have txids. Submission does not prove recipient delivery.
 
 A crash after step 5 may leave an uncertain paid transfer. No blind automatic
-retry occurs. `chat outbox` shows its state; reconcile wallet history, stop other
-profile processes, then explicitly use `chat flush --retry-uncertain` if needed.
-The same ciphertext can be paid for twice but cannot decrypt twice at the receiver.
+retry occurs. `chat outbox` shows its state; reconcile wallet history and the known
+TXID before continuing. The shared spending gate blocks uncertain reservations,
+including explicit outbox retries; never reset it to repeat a payment.
 Simulation makes duplicate identical packets idempotent for deterministic recovery.
 
 The real outbox pauses if its prior txid is not yet indexed. `chat flush` resumes
@@ -113,4 +114,7 @@ reservation. Approval is bound to the proposal hash and consumed before submissi
 No retry path resets it. Reconciliation reads wallet history and records only probe
 metadata and known public probe bytes. It does not access wallet databases or
 application session keys. This is a local safeguard, not a boundary against other
-unlocked-RPC clients. See `mainnet-validation.md` for the pending authorization.
+unlocked-RPC clients. The experiment completed and its authorization is consumed;
+see [Mainnet validation](mainnet-validation.md). Historical fixed-batch runners
+are evidence tools, not reusable authorization. Current operation is documented
+in [running.md](running.md).

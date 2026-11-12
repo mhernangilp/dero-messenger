@@ -1,0 +1,97 @@
+[alice] setup --address
+Profile created for dero1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+Public identity: d171748626ae5d42f731652850f1ac98212cf3321948bf5b6686c923423b381e
+Fingerprint: 11f6fa957f21210f23dda084b6ed12b8d3e191e7bb6a4d1d233ad33496a16108
+[alice] identity
+{"public_key": "d171748626ae5d42f731652850f1ac98212cf3321948bf5b6686c923423b381e", "fingerprint": "11f6fa957f21210f23dda084b6ed12b8d3e191e7bb6a4d1d233ad33496a16108"}
+[bob] setup --address
+Profile created for dero1ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
+Public identity: c57f8e6e84bbfeb51929ebc907e1ba7bab9c219c606cfd39af39faffd3c23136
+Fingerprint: 1df93310e1f12dc8dca1e32eef17373266ac33941966d1d4f8f2d12d4f27c919
+[bob] identity
+{"public_key": "c57f8e6e84bbfeb51929ebc907e1ba7bab9c219c606cfd39af39faffd3c23136", "fingerprint": "1df93310e1f12dc8dca1e32eef17373266ac33941966d1d4f8f2d12d4f27c919"}
+[charlie] setup --address
+Profile created for dero1rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+Public identity: 78afe2ccc05641c17b625dada4bb33dbcbaae81c93564d3e951ffa5e6bc273e3
+Fingerprint: 37774df9344370b0f2638f4064eff639d577cf0be54cc65f8b1a04aa2ea92c35
+[charlie] identity
+{"public_key": "78afe2ccc05641c17b625dada4bb33dbcbaae81c93564d3e951ffa5e6bc273e3", "fingerprint": "37774df9344370b0f2638f4064eff639d577cf0be54cc65f8b1a04aa2ea92c35"}
+[alice] contacts add
+Application fingerprint: 1df93310e1f12dc8dca1e32eef17373266ac33941966d1d4f8f2d12d4f27c919
+Contact saved. Application identity is not proof of wallet ownership.
+[bob] contacts add
+Application fingerprint: 11f6fa957f21210f23dda084b6ed12b8d3e191e7bb6a4d1d233ad33496a16108
+Contact saved. Application identity is not proof of wallet ownership.
+[charlie] contacts add
+Application fingerprint: 1df93310e1f12dc8dca1e32eef17373266ac33941966d1d4f8f2d12d4f27c919
+Contact saved. Application identity is not proof of wallet ownership.
+[bob] contacts add
+Application fingerprint: 37774df9344370b0f2638f4064eff639d577cf0be54cc65f8b1a04aa2ea92c35
+Contact saved. Application identity is not proof of wallet ownership.
+[alice] chat request
+7d2e7497bbb518fce5bb742a61d54de7
+[bob] sync
+Conversation request 7d2e7497bbb518fce5bb742a61d54de7
+Synchronized wallet height 6
+[bob] chat accept
+Accepted; response queued or submitted
+[alice] sync
+Session established 7d2e7497bbb518fce5bb742a61d54de7
+Synchronized wallet height 9
+[alice] chat send
+Message encrypted and queued; inspect chat outbox for submission status
+[bob] sync
+Message received in 7d2e7497bbb518fce5bb742a61d54de7
+Synchronized wallet height 10
+[bob] chat read
+in: Hello Bob!
+[bob] chat send
+Message encrypted and queued; inspect chat outbox for submission status
+[alice] sync
+Message received in 7d2e7497bbb518fce5bb742a61d54de7
+Synchronized wallet height 11
+[charlie] chat request
+df28b6b6c51ce75095ec33f9a21963da
+[bob] sync
+Conversation request df28b6b6c51ce75095ec33f9a21963da
+Synchronized wallet height 17
+[bob] chat accept
+Accepted; response queued or submitted
+[charlie] sync
+Session established df28b6b6c51ce75095ec33f9a21963da
+Synchronized wallet height 20
+[charlie] chat send
+Message encrypted and queued; inspect chat outbox for submission status
+[bob] sync
+Message received in df28b6b6c51ce75095ec33f9a21963da
+Synchronized wallet height 21
+[bob] chat read
+in: Hello Bob!
+[bob] chat send
+Message encrypted and queued; inspect chat outbox for submission status
+[charlie] sync
+Message received in df28b6b6c51ce75095ec33f9a21963da
+Synchronized wallet height 22
+[alice] chat send
+Message encrypted and queued; inspect chat outbox for submission status
+[bob] sync
+Message received in 7d2e7497bbb518fce5bb742a61d54de7
+Synchronized wallet height 32
+[bob] chat read
+in: Hello Bob!
+out: Hello Alice!
+in: 
+LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+[charlie] chat send
+Message encrypted and queued; inspect chat outbox for submission status
+[bob] sync
+Message received in df28b6b6c51ce75095ec33f9a21963da
+Synchronized wallet height 33
+[bob] chat read
+in: Hello Bob!
+out: Hello Charlie!
+in: Offline message
+PASS: three independent CLI profiles; two authenticated sessions; separate conversations; ten-fragment message; offline recovery; 33 simulated transfers.
+/tmp/dero-chat-demo-cpda8d3h

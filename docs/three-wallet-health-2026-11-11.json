@@ -1,0 +1,54 @@
+{
+  "observed_at_utc": "2026-11-11T09:06:37.940964+00:00",
+  "mode": "read_only_no_transfer",
+  "wallet_version_source": "User-provided startup logs: 3.6.0-153.DEROHE.STARGATE+21082026, Mainnet",
+  "wallets": {
+    "alice": {
+      "rpc": "http://127.0.0.1:20209/json_rpc",
+      "expected_address": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "gross_budget_atomic": 3094,
+      "address": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "height": 7886624,
+      "balance": 4362,
+      "unlocked_balance": 4362,
+      "address_matches": true,
+      "address_parser": "passed",
+      "budget_funded": true,
+      "get_transfers_entries": 0
+    },
+    "bob": {
+      "rpc": "http://127.0.0.1:20210/json_rpc",
+      "expected_address": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "gross_budget_atomic": 1456,
+      "address": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "height": 7886624,
+      "balance": 4501,
+      "unlocked_balance": 4501,
+      "address_matches": true,
+      "address_parser": "passed",
+      "budget_funded": true,
+      "get_transfers_entries": 2
+    },
+    "charlie": {
+      "rpc": "http://127.0.0.1:20211/json_rpc",
+      "expected_address": "dero1qy33m8gwtv4a7quhrv070pwu33zw8d4wvxkn5fcfqevgdu8v3q002qqcn3rj2",
+      "gross_budget_atomic": 1456,
+      "address": "dero1qy33m8gwtv4a7quhrv070pwu33zw8d4wvxkn5fcfqevgdu8v3q002qqcn3rj2",
+      "height": 7886624,
+      "balance": 3075,
+      "unlocked_balance": 3075,
+      "address_matches": true,
+      "address_parser": "passed",
+      "budget_funded": true,
+      "get_transfers_entries": 0
+    }
+  },
+  "daemon": {
+    "version": "3.6.0-152.DEROHE.STARGATE+14082026",
+    "height": 7886624,
+    "topoheight": 7886624,
+    "testnet": false,
+    "network": "",
+    "status": "OK"
+  }
+}

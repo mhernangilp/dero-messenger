@@ -80,7 +80,27 @@ lie, or become unavailable. No receipt protocol proves delivery. Confirmation de
 is a configurable heuristic and deep reorganizations are not reconciled.
 
 Incomplete assemblies expire after 30 days of local observation. Paid submissions
-can have ambiguous outcomes following a timeout. Explicit retry may incur another
-fee. Wallet registration, funding, deployed consensus behavior, and fee acceptance
-remain unvalidated on Mainnet in this delivery. No automated mining or paid live
-test is included.
+can have ambiguous outcomes following a timeout. The experiment gate blocks further spending after an uncertain
+submission, including explicit outbox retries; there is no automatic reservation
+release. Mainnet validation completed an Alice/Bob handshake and one two-fragment
+encrypted message. Charlie's Mainnet session, longer encrypted Mainnet messages
+and stopped-wallet recovery remain unverified. See [Mainnet validation](mainnet-validation.md)
+for evidence and [the proposed budget](three-wallet-plan.md) for spending limits.
+
+## Three-wallet review
+
+The pinned Release153 source and live probe history show that Bob's `sender`
+metadata can name Bob rather than Alice. It is never a contact-authentication input.
+Existing explicit fingerprint verification remains mandatory; wallet signing exists
+in the official CLI but no corresponding Wallet RPC method was found. No protocol
+change or new wallet-ownership guarantee is introduced. Tests exercise cross-session
+ciphertext transplantation, signed-field substitution, impersonation using a
+different application key, three independent profiles, and replay/tamper rejection.
+Incomplete legacy fragment groups now also enforce the 8192-byte limit before
+completion, closing a resource-accounting gap. The wire format is unchanged.
+
+The spending ledger is immutable per path and reserves costs before a single call.
+It does not constrain other clients with unlocked RPC access, filesystem rollback,
+or the official wallet's internal send retries. Do not clone a ledger or profile.
+[Privacy analysis](privacy-analysis.md) distinguishes public ring candidates from
+actual participant identification and documents the confirmed public metadata.

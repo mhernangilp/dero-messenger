@@ -1,0 +1,92 @@
+{
+  "proposal": {
+    "probe": "chainchat-psk-001",
+    "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+    "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+    "endpoint": "http://127.0.0.1:20209/json_rpc",
+    "payload_hex": "43500146775d4320736566679dd394ba73e36aaa1ddb3fdb53987c1112a8abc1c07d05ff8f22ffb86f",
+    "payload_sha256": "d2d5805177e989fa7fe38f9075baeb80ca991989aeee4571dd6cf0980860056d",
+    "max_transactions": 1,
+    "maximum_total_atomic": 182,
+    "rpc": {
+      "method": "Transfer",
+      "params": {
+        "transfers": [
+          {
+            "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+            "amount": 1,
+            "payload_rpc": [
+              {
+                "name": "m",
+                "datatype": "S",
+                "value": "Q1ABRnddQyBzZWZnndOUunPjaqod2z/bU5h8ERKoq8HAfQX/jyL/uG8="
+              }
+            ]
+          }
+        ],
+        "ringsize": 16,
+        "fees": 181
+      }
+    }
+  },
+  "proposal_sha256": "18e8b403ca2280a5b552326f80e99c8b3675681ec405770e9e9fe2adec93f3a3",
+  "status": "delivered",
+  "transfer_calls_reserved": 1,
+  "reserved_atomic": 182,
+  "superseded_proposals": [
+    "9e8e2450e53cf74627d9413b6946a36112071f949d26b70cae17fb6f8c3016b4",
+    "92022135cffed5bb12f6f4b49449c26de48dba1a59329e7de22807833ef08054"
+  ],
+  "events": [
+    {
+      "event": "user_approved_exact_proposal",
+      "proposal_sha256": "92022135cffed5bb12f6f4b49449c26de48dba1a59329e7de22807833ef08054",
+      "recorded_at": "2026-11-10T19:54:02.782037+00:00"
+    },
+    {
+      "event": "blocked_missing_ephemeral_key",
+      "details": "Prior runner session unavailable; no matching process found; zero submission attempts."
+    },
+    {
+      "event": "user_authorized_one_Hello_Bob_probe_with_agent_chosen_key",
+      "maximum_total_atomic": 182,
+      "recorded_at": "2026-11-10T20:04:15.358296+00:00",
+      "proposal_sha256": "18e8b403ca2280a5b552326f80e99c8b3675681ec405770e9e9fe2adec93f3a3"
+    }
+  ],
+  "approval_sha256": "18e8b403ca2280a5b552326f80e99c8b3675681ec405770e9e9fe2adec93f3a3",
+  "submitted_at": 1794341055.483496,
+  "approved_at_utc": "2026-11-10T20:04:15.483497+00:00",
+  "txid": "a930ce565116983f5cd4b05bcaf1ebebab3be72294b71b517b74f6dad74c8684",
+  "sender_evidence": {
+    "txid": "a930ce565116983f5cd4b05bcaf1ebebab3be72294b71b517b74f6dad74c8684",
+    "height": 7884098,
+    "topoheight": 7884098,
+    "blockhash": "ce3d7c5af0acd309dbbb2b680461b9f0840217063ad1fac769065bcb5817cc1c",
+    "pos": 0,
+    "incoming": false,
+    "amount": 1,
+    "fees": 181
+  },
+  "receiver_evidence": {
+    "txid": "a930ce565116983f5cd4b05bcaf1ebebab3be72294b71b517b74f6dad74c8684",
+    "height": 7884098,
+    "topoheight": 7884098,
+    "blockhash": "ce3d7c5af0acd309dbbb2b680461b9f0840217063ad1fac769065bcb5817cc1c",
+    "pos": 0,
+    "incoming": true,
+    "amount": 1,
+    "fees": 181
+  },
+  "received_hex": "43500146775d4320736566679dd394ba73e36aaa1ddb3fdb53987c1112a8abc1c07d05ff8f22ffb86f",
+  "received_sha256": "d2d5805177e989fa7fe38f9075baeb80ca991989aeee4571dd6cf0980860056d",
+  "bytes_equal": true,
+  "first_observed_at": 1794341097.7281141,
+  "delivery_latency_upper_bound_seconds": 42.24461817741394,
+  "confirmation_estimate": 1,
+  "actual_total_atomic": 182,
+  "within_budget": true,
+  "psk_decryption_verified": true,
+  "plaintext_sha256": "42ba8354db263a6a5a9f74d6b7ceb4c962a3d8fd58a41969e521eb0222455415",
+  "verification_observed_at_utc": "2026-11-10T20:04:57.793188+00:00"
+}

@@ -1,0 +1,57 @@
+{
+  "observed_at_utc": "2026-11-11T16:37:32.293862+00:00",
+  "source": "Bob official GetTransferbyTXID",
+  "wallet_height": 7888081,
+  "receipts": [
+    {
+      "txid": "b39b2ef6bbfbcaa85bfd159ad0f194ddd9e1d2df7504a677a60653c73126a7d5",
+      "packet_sha256": "1f42479bed8b45422e52654633c0b8c93cb144ddf9c3114b32573942c900ac7e",
+      "height": 7886830,
+      "confirmations": 1252,
+      "reported_sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya"
+    },
+    {
+      "txid": "4f29dc7a25ed9e85689dc7d54ca9ee1298067f59108babcd948e16efe029434a",
+      "packet_sha256": "b483ca415ab8d72427feaa4f3eba500e11ea7c67a663624fcf1e8310ee905aa9",
+      "height": 7886832,
+      "confirmations": 1250,
+      "reported_sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya"
+    },
+    {
+      "txid": "2943cc0234690167d6767bc99c4f76ef7c0f455590f3d32e7db74548a4d399bc",
+      "packet_sha256": "b1adeeb820c9956226623dbb8eea6558ea034e43ff11f2f0a4f0cb149ea008ef",
+      "height": 7886833,
+      "confirmations": 1249,
+      "reported_sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya"
+    },
+    {
+      "txid": "317c756962cc3cf9a988be6b43fbb445db7cdf359b608a784a722a1939cb9df7",
+      "packet_sha256": "71dc369e16934706cbd8481de3ad5a8f562a4a949b320513ed168dd588bc1b08",
+      "height": 7886834,
+      "confirmations": 1248,
+      "reported_sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya"
+    },
+    {
+      "txid": "5f9d3c29646f3d90b28c48526d141152b7542df400f0985c9484ece07a5cbfbd",
+      "packet_sha256": "2da06816b6d146705c930905c8af73cdda3879f167ebc9d623d0b2dc237f5dc6",
+      "height": 7886836,
+      "confirmations": 1246,
+      "reported_sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya"
+    },
+    {
+      "txid": "b20aa962d7c559ea8c425b846a38d27ee4dd57adad98fe6c5ecb18260350a989",
+      "packet_sha256": "230cc79f596eba9b8a7845fb95be516f7c3c7d660c7af1970aba6d18232acf7d",
+      "height": 7886843,
+      "confirmations": 1239,
+      "reported_sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya"
+    }
+  ],
+  "reassembled_bytes": 312,
+  "envelope_sha256": "2d5e6a3ce88fd4744f1cf27abdff5409f2e3fa5c7a6cf67e0dd1342ed32a53b8",
+  "sid": "7449a7ca589687e87c4307cf0fc562f3",
+  "signature_verified": true,
+  "identities_match": true,
+  "all_at_least_ten_confirmations": true,
+  "bob_application_sync": "Pending user unlock of encrypted profile",
+  "handshake_complete": false
+}

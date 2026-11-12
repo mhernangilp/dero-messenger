@@ -1,0 +1,176 @@
+{
+  "status": "proposal_only_no_authorization",
+  "transactions": [
+    {
+      "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "payload_hex": "444d2d5e6a3ce88fd4744f1cf27abdff5409000601017449a7ca589687e87c4307cf0fc562f38d4b1c7ae7f4b922148334da6eeda47c4c6d09724687839c12e28b6431e641bcf6c46ed9ff2c43a0",
+      "payload_sha256": "1f42479bed8b45422e52654633c0b8c93cb144ddf9c3114b32573942c900ac7e",
+      "envelope_id": "2d5e6a3ce88fd4744f1cf27abdff5409f2e3fa5c7a6cf67e0dd1342ed32a53b8",
+      "maximum_debit_atomic": 182,
+      "rpc": {
+        "method": "Transfer",
+        "params": {
+          "transfers": [
+            {
+              "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+              "amount": 1,
+              "payload_rpc": [
+                {
+                  "name": "m",
+                  "datatype": "S",
+                  "value": "RE0tXmo86I/UdE8c8nq9/1QJAAYBAXRJp8pYlofofEMHzw/FYvONSxx65/S5IhSDNNpu7aR8TG0JckaHg5wS4otkMeZBvPbEbtn/LEOg"
+                }
+              ]
+            }
+          ],
+          "ringsize": 16,
+          "fees": 181
+        }
+      }
+    },
+    {
+      "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "payload_hex": "444d2d5e6a3ce88fd4744f1cf27abdff54090106cdb6e19df0bdf8977fe6f555e92c2f00b74da5a0e42cda4abd8730dfe9678f4e7fa3c28d0c04699763ecc8285f42ea0f44f5738a4527aa5c4264",
+      "payload_sha256": "b483ca415ab8d72427feaa4f3eba500e11ea7c67a663624fcf1e8310ee905aa9",
+      "envelope_id": "2d5e6a3ce88fd4744f1cf27abdff5409f2e3fa5c7a6cf67e0dd1342ed32a53b8",
+      "maximum_debit_atomic": 182,
+      "rpc": {
+        "method": "Transfer",
+        "params": {
+          "transfers": [
+            {
+              "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+              "amount": 1,
+              "payload_rpc": [
+                {
+                  "name": "m",
+                  "datatype": "S",
+                  "value": "RE0tXmo86I/UdE8c8nq9/1QJAQbNtuGd8L34l3/m9VXpLC8At02loOQs2kq9hzDf6WePTn+jwo0MBGmXY+zIKF9C6g9E9XOKRSeqXEJk"
+                }
+              ]
+            }
+          ],
+          "ringsize": 16,
+          "fees": 181
+        }
+      }
+    },
+    {
+      "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "payload_hex": "444d2d5e6a3ce88fd4744f1cf27abdff5409020665726f3171796e726d38716e3832766573786a636563757772306474376c673567793465306a64726864647570356d73366b37303536327a7171",
+      "payload_sha256": "b1adeeb820c9956226623dbb8eea6558ea034e43ff11f2f0a4f0cb149ea008ef",
+      "envelope_id": "2d5e6a3ce88fd4744f1cf27abdff5409f2e3fa5c7a6cf67e0dd1342ed32a53b8",
+      "maximum_debit_atomic": 182,
+      "rpc": {
+        "method": "Transfer",
+        "params": {
+          "transfers": [
+            {
+              "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+              "amount": 1,
+              "payload_rpc": [
+                {
+                  "name": "m",
+                  "datatype": "S",
+                  "value": "RE0tXmo86I/UdE8c8nq9/1QJAgZlcm8xcXlucm04cW44MnZlc3hqY2VjdXdyMGR0N2xnNWd5NGUwamRyaGRkdXA1bXM2azcwNTYyenFx"
+                }
+              ]
+            }
+          ],
+          "ringsize": 16,
+          "fees": 181
+        }
+      }
+    },
+    {
+      "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "payload_hex": "444d2d5e6a3ce88fd4744f1cf27abdff540903066771396538746b426465726f31717939757637337768347333657733733638713577733679336e6e3673757477723678733667376d687a756566",
+      "payload_sha256": "71dc369e16934706cbd8481de3ad5a8f562a4a949b320513ed168dd588bc1b08",
+      "envelope_id": "2d5e6a3ce88fd4744f1cf27abdff5409f2e3fa5c7a6cf67e0dd1342ed32a53b8",
+      "maximum_debit_atomic": 182,
+      "rpc": {
+        "method": "Transfer",
+        "params": {
+          "transfers": [
+            {
+              "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+              "amount": 1,
+              "payload_rpc": [
+                {
+                  "name": "m",
+                  "datatype": "S",
+                  "value": "RE0tXmo86I/UdE8c8nq9/1QJAwZncTllOHRrQmRlcm8xcXk5dXY3M3doNHMzZXczczY4cTV3czZ5M25uNnN1dHdyNnhzNmc3bWh6dWVm"
+                }
+              ]
+            }
+          ],
+          "ringsize": 16,
+          "fees": 181
+        }
+      }
+    },
+    {
+      "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "payload_hex": "444d2d5e6a3ce88fd4744f1cf27abdff54090406653039757976646371676c70677779612f5bc1071f28cba1a948b7c5386277a5cf0e0d2538ce0cceb671352b0ef6ecc90f7a00b5c9643c41a3a6",
+      "payload_sha256": "2da06816b6d146705c930905c8af73cdda3879f167ebc9d623d0b2dc237f5dc6",
+      "envelope_id": "2d5e6a3ce88fd4744f1cf27abdff5409f2e3fa5c7a6cf67e0dd1342ed32a53b8",
+      "maximum_debit_atomic": 182,
+      "rpc": {
+        "method": "Transfer",
+        "params": {
+          "transfers": [
+            {
+              "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+              "amount": 1,
+              "payload_rpc": [
+                {
+                  "name": "m",
+                  "datatype": "S",
+                  "value": "RE0tXmo86I/UdE8c8nq9/1QJBAZlMDl1eXZkY3FnbHBnd3lhL1vBBx8oy6GpSLfFOGJ3pc8ODSU4zgzOtnE1Kw727MkPegC1yWQ8QaOm"
+                }
+              ]
+            }
+          ],
+          "ringsize": 16,
+          "fees": 181
+        }
+      }
+    },
+    {
+      "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "payload_hex": "444d2d5e6a3ce88fd4744f1cf27abdff54090506c1add7312d5ce7ccc176354f275afdcf44416abb3906",
+      "payload_sha256": "230cc79f596eba9b8a7845fb95be516f7c3c7d660c7af1970aba6d18232acf7d",
+      "envelope_id": "2d5e6a3ce88fd4744f1cf27abdff5409f2e3fa5c7a6cf67e0dd1342ed32a53b8",
+      "maximum_debit_atomic": 182,
+      "rpc": {
+        "method": "Transfer",
+        "params": {
+          "transfers": [
+            {
+              "destination": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+              "amount": 1,
+              "payload_rpc": [
+                {
+                  "name": "m",
+                  "datatype": "S",
+                  "value": "RE0tXmo86I/UdE8c8nq9/1QJBQbBrdcxLVznzMF2NU8nWv3PREFquzkG"
+                }
+              ]
+            }
+          ],
+          "ringsize": 16,
+          "fees": 181
+        }
+      }
+    }
+  ],
+  "count": 6,
+  "maximum_debit_atomic": 1092,
+  "proposal_sha256": "8b4db8fb773155480ecc7ed2fd63747f79994bb0c233aa678ad686d0778379b6"
+}

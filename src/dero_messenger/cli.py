@@ -16,6 +16,7 @@ from rich.console import Console
 from . import crypto, protocol
 from .config import Config
 from .conversations import Messenger, initial_state
+from .experiment import SpendingGate
 from .monitor import listen
 from .rpc import RPC, RPCError
 from .storage import Store
@@ -56,18 +57,25 @@ def passphrase() -> str:
 def opened(ctx: typer.Context) -> Iterator[Messenger]:
     store = None
     transport = None
+    gate = None
     try:
         config = Config.load(ctx.obj)
         store = Store(ctx.obj / "state.db", passphrase())
         if config.backend == "simulated":
             transport = Simulated(Path(config.chain), config.address)
         elif config.backend == "dero":
+            if config.spending_policy:
+                policy_path = Path(config.spending_policy).resolve()
+                gate = SpendingGate(
+                    policy_path.with_suffix(".db"), json.loads(policy_path.read_text())
+                )
             transport = Dero(
                 Wallet(RPC(config.wallet_rpc, wallet_auth())),
                 config.address,
                 config.enable_mainnet,
                 config.fee_atomic,
                 typer.confirm,
+                gate,
             )
         else:
             raise ValueError("Unsupported transport backend")
@@ -79,6 +87,8 @@ def opened(ctx: typer.Context) -> Iterator[Messenger]:
         display(f"Error: {exc}")
         raise typer.Exit(1) from None
     finally:
+        if gate:
+            gate.close()
         if store:
             store.close()
         if isinstance(transport, Simulated):
@@ -95,6 +105,7 @@ def setup(
     enable_mainnet: Annotated[bool, typer.Option()] = False,
     confirmations: Annotated[int, typer.Option(min=1)] = 10,
     fee_atomic: Annotated[int, typer.Option(min=1, max=100000)] = 121,
+    spending_policy: Annotated[Path | None, typer.Option()] = None,
 ) -> None:
     """Create an independent encrypted profile; DERO addresses come from Wallet RPC."""
     try:
@@ -120,6 +131,7 @@ def setup(
             confirmations,
             enable_mainnet,
             fee_atomic,
+            str(spending_policy.resolve()) if spending_policy else None,
         )
         store = Store(ctx.obj / "state.db", secret, initial_state(address))
         key = crypto.public(bytes.fromhex(store.snapshot()["identity"]))
@@ -175,9 +187,28 @@ def list_contacts(ctx: typer.Context) -> None:
 
 
 @chat.command("request")
-def request(ctx: typer.Context, contact: str) -> None:
+def request(
+    ctx: typer.Context,
+    contact: str,
+    prepare_only: Annotated[bool, typer.Option()] = False,
+) -> None:
+    """Create a request; --prepare-only persists it without calling the transport send path."""
     with opened(ctx) as messenger:
-        display(messenger.request(contact))
+        display(messenger.request(contact, prepare_only=prepare_only))
+        if prepare_only:
+            display("Prepared locally; no transaction submitted. Review with chat proposal.")
+
+
+@chat.command("proposal")
+def proposal(ctx: typer.Context) -> None:
+    """Display exact pending RPC parameters without sending or revealing private keys."""
+    from .experiment import pending_proposal
+
+    with opened(ctx) as messenger:
+        config = Config.load(ctx.obj)
+        display(
+            json.dumps(pending_proposal(messenger.store.snapshot(), config.fee_atomic), indent=2)
+        )
 
 
 @chat.command("requests")
@@ -194,10 +225,18 @@ def requests(ctx: typer.Context) -> None:
 
 
 @chat.command("accept")
-def accept(ctx: typer.Context, request_id: str) -> None:
+def accept(
+    ctx: typer.Context,
+    request_id: str,
+    prepare_only: Annotated[bool, typer.Option()] = False,
+) -> None:
     with opened(ctx) as messenger:
-        messenger.accept(request_id)
-        display("Accepted; response queued or submitted")
+        messenger.accept(request_id, prepare_only=prepare_only)
+        display(
+            "Accepted locally; response prepared without sending"
+            if prepare_only
+            else "Accepted; response queued or submitted"
+        )
 
 
 @chat.command("reject")
@@ -208,10 +247,19 @@ def reject(ctx: typer.Context, request_id: str) -> None:
 
 
 @chat.command("send")
-def send(ctx: typer.Context, contact: str, message: str) -> None:
+def send(
+    ctx: typer.Context,
+    contact: str,
+    message: str,
+    prepare_only: Annotated[bool, typer.Option()] = False,
+) -> None:
     with opened(ctx) as messenger:
-        messenger.send(contact, message)
-        display("Message encrypted and queued; inspect chat outbox for submission status")
+        messenger.send(contact, message, prepare_only=prepare_only)
+        display(
+            "Message encrypted and prepared locally; no transaction submitted"
+            if prepare_only
+            else "Message encrypted and queued; inspect chat outbox for submission status"
+        )
 
 
 @chat.command("read")
@@ -246,6 +294,26 @@ def outbox(ctx: typer.Context) -> None:
     with opened(ctx) as messenger:
         for item in messenger.store.snapshot()["outbox"]:
             display(f"{item['status']}: txid={item['txid']} destination={item['destination']}")
+
+
+@chat.command("reconcile")
+def reconcile(ctx: typer.Context) -> None:
+    """Record known submitted packets in the app outbox using read-only wallet history."""
+    with opened(ctx) as messenger:
+        if not isinstance(messenger.transport, Dero):
+            raise ValueError("Reconciliation requires the DERO backend")
+        count = 0
+        with messenger.store.transaction() as state:
+            for item in state["outbox"]:
+                if item["status"] not in ("pending", "sending"):
+                    continue
+                txid = messenger.transport.reconcile(
+                    item["destination"], bytes.fromhex(item["payload"])
+                )
+                if txid:
+                    item.update(status="submitted", txid=txid)
+                    count += 1
+        display(f"Reconciled {count} outbox fragments; no transactions submitted")
 
 
 @chat.command("flush")

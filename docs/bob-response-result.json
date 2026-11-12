@@ -1,0 +1,171 @@
+{
+  "proposal_sha256": "5bc06e0f4b6843113344c5013418840b1f56749fd8edc93cbcc7686857ab6147",
+  "authorization": "User approved exact three-fragment batch",
+  "authorized_maximum_atomic": 546,
+  "before": {
+    "sender": {
+      "address": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "height": 7888119,
+      "balance": 4507,
+      "unlocked_balance": 4507
+    },
+    "recipient": {
+      "address": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "height": 7888119,
+      "balance": 3270,
+      "unlocked_balance": 3270
+    }
+  },
+  "transactions": [
+    {
+      "index": 0,
+      "payload_sha256": "d83487b79a2412f96a64977fdaf0fc76f6c5c9b74c4729483b1c07ee71ed5eac",
+      "started_at_utc": "2026-11-11T16:49:07.828398+00:00",
+      "started_epoch": 1794415747.8284302,
+      "status": "indexed",
+      "balance_before": {
+        "address": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "height": 7888119,
+        "balance": 4507,
+        "unlocked_balance": 4507
+      },
+      "txid": "777a59af8ba5d68c0289ab7f361a57a7e7222f4c6b306081655d29fb89700024",
+      "sender_entry": {
+        "txid": "777a59af8ba5d68c0289ab7f361a57a7e7222f4c6b306081655d29fb89700024",
+        "pos": 0,
+        "height": 7888122,
+        "topoheight": 7888122,
+        "blockhash": "9bcd80c42eff121d2b6675576f07d9eb9d7748a8dff39827f2ab886bb78daddf",
+        "time": "2026-11-11T17:49:53.465+01:00",
+        "sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "destination": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+        "amount": 1,
+        "fees": 181,
+        "incoming": false
+      },
+      "receiver_entry": {
+        "txid": "777a59af8ba5d68c0289ab7f361a57a7e7222f4c6b306081655d29fb89700024",
+        "pos": 0,
+        "height": 7888122,
+        "topoheight": 7888122,
+        "blockhash": "9bcd80c42eff121d2b6675576f07d9eb9d7748a8dff39827f2ab886bb78daddf",
+        "time": "2026-11-11T17:49:53.465+01:00",
+        "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+        "destination": "",
+        "amount": 1,
+        "fees": 181,
+        "incoming": true
+      },
+      "payload_equal": true,
+      "observed_at_utc": "2026-11-11T16:49:59.912842+00:00",
+      "observed_delivery_seconds": 52.08441948890686,
+      "receiver_confirmation_estimate": 1
+    },
+    {
+      "index": 1,
+      "payload_sha256": "523fb558c82eab691696b8ec78168c6fb853822de3e757aa8fee3470ea0197f0",
+      "started_at_utc": "2026-11-11T16:50:00.139728+00:00",
+      "started_epoch": 1794415800.1397574,
+      "status": "indexed",
+      "balance_before": {
+        "address": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "height": 7888122,
+        "balance": 4325,
+        "unlocked_balance": 4325
+      },
+      "txid": "b88f3e2524267d548671496c75836e2bf39a225a2f7b65e57e13a977074544a3",
+      "sender_entry": {
+        "txid": "b88f3e2524267d548671496c75836e2bf39a225a2f7b65e57e13a977074544a3",
+        "pos": 0,
+        "height": 7888124,
+        "topoheight": 7888124,
+        "blockhash": "12303c74e9f6498e8353edad6ff716ca9b239bab7130f3f23362f86f58d4b9e8",
+        "time": "2026-11-11T17:50:29.413+01:00",
+        "sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "destination": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+        "amount": 1,
+        "fees": 181,
+        "incoming": false
+      },
+      "receiver_entry": {
+        "txid": "b88f3e2524267d548671496c75836e2bf39a225a2f7b65e57e13a977074544a3",
+        "pos": 0,
+        "height": 7888124,
+        "topoheight": 7888124,
+        "blockhash": "12303c74e9f6498e8353edad6ff716ca9b239bab7130f3f23362f86f58d4b9e8",
+        "time": "2026-11-11T17:50:29.413+01:00",
+        "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+        "destination": "",
+        "amount": 1,
+        "fees": 181,
+        "incoming": true
+      },
+      "payload_equal": true,
+      "observed_at_utc": "2026-11-11T16:50:37.175744+00:00",
+      "observed_delivery_seconds": 37.03600811958313,
+      "receiver_confirmation_estimate": 1
+    },
+    {
+      "index": 2,
+      "payload_sha256": "76e6b640aecfd4b3c26b8c9e5540b99464b8fc97e19a956546830f0fdf3aca6e",
+      "started_at_utc": "2026-11-11T16:50:37.389573+00:00",
+      "started_epoch": 1794415837.3896015,
+      "status": "indexed",
+      "balance_before": {
+        "address": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "height": 7888124,
+        "balance": 4143,
+        "unlocked_balance": 4143
+      },
+      "txid": "25f5e7cad62aced871fa29aec1577ba5c7e862008fbb47783811975cb3c480bf",
+      "sender_entry": {
+        "txid": "25f5e7cad62aced871fa29aec1577ba5c7e862008fbb47783811975cb3c480bf",
+        "pos": 0,
+        "height": 7888125,
+        "topoheight": 7888125,
+        "blockhash": "da767d3b2e47794349d68a9eee3a1a223899d9df7d533ffbb42b928ddea1bb74",
+        "time": "2026-11-11T17:50:42.014+01:00",
+        "sender": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+        "destination": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+        "amount": 1,
+        "fees": 181,
+        "incoming": false
+      },
+      "receiver_entry": {
+        "txid": "25f5e7cad62aced871fa29aec1577ba5c7e862008fbb47783811975cb3c480bf",
+        "pos": 0,
+        "height": 7888125,
+        "topoheight": 7888125,
+        "blockhash": "da767d3b2e47794349d68a9eee3a1a223899d9df7d533ffbb42b928ddea1bb74",
+        "time": "2026-11-11T17:50:42.014+01:00",
+        "sender": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+        "destination": "",
+        "amount": 1,
+        "fees": 181,
+        "incoming": true
+      },
+      "payload_equal": true,
+      "observed_at_utc": "2026-11-11T16:50:45.540557+00:00",
+      "observed_delivery_seconds": 8.150966167449951,
+      "receiver_confirmation_estimate": 1
+    }
+  ],
+  "status": "all_three_indexed",
+  "after": {
+    "sender": {
+      "address": "dero1qy9uv73wh4s3ew3s68q5ws6y3nn6sutwr6xs6g7mhzuefe09uyvdcqglpgwya",
+      "height": 7888125,
+      "balance": 3961,
+      "unlocked_balance": 3961
+    },
+    "recipient": {
+      "address": "dero1qynrm8qn82vesxjcecuwr0dt7lg5gy4e0jdrhddup5ms6k70562zqqgq9e8tk",
+      "height": 7888125,
+      "balance": 3273,
+      "unlocked_balance": 3273
+    }
+  },
+  "actual_fees_atomic": 543,
+  "actual_amount_atomic": 3,
+  "actual_gross_debit_atomic": 546
+}
